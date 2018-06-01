@@ -1,63 +1,5 @@
 .budget {
     position: relative;
-}
-
-.budget .body {
-    padding: 15px 25px;
-}
-
-.budget .confirmation .button {
-    width: 50%;
-    text-align: center;
-    display: inline-block;
-}
-
-.budget .confirmation .button:hover {
-    cursor: pointer;
-}
-
-.budget .confirmation .button .text {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.budget .confirmation .button.confirm.save {
-    background-color: #187ed1;
-    border-top: 1px solid #136ab1;
-    color: #ffffff;
-}
-
-.budget .confirmation .button.confirm.delete {
-    background-color: #d11818;
-    border-top: 1px solid #a71212;
-    color: #ffffff;
-}
-
-.budget .confirmation .button.cancel {
-    border-top: 1px solid #d0d0d0;
-}
-
-.budget .name-container {
-    width: 100%;
-}
-
-.budget .name {
-    color: #2c2c2c;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.budget .description {
-    color: #686868;
-    margin-bottom: 5px;
-}
-
-.budget .amount {
-    color: #2c2c2c;
-}
-
-.budget .info {
-    display: inline-block;
     width: 100%;
 }
 
@@ -72,36 +14,6 @@
     cursor: pointer;
 }
 
-.budget .icons .icon.edit:hover {
-    color: #187ed1;
-}
-
 .budget .icons .icon.delete:hover {
     color: #d11818;
-}
-
-.create {
-    float: right;
-    margin-top: 15px;
-    margin-right: 10px;
-}
-
-.create:hover {
-    cursor: pointer;
-}
-
-.create .dot {
-    color: white;
-    font-size: 20px;
-    padding: 0px 6px 0px 6px;
-    background-color: #187ed1;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.create .link {
-    display: inline-block;
-    text-transform: uppercase;
-    color: #187ed1;
-    margin-left: 10px;
 }

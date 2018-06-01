@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Budget } from './budget';
 import { BudgetService } from './budgets.service';
 
@@ -13,48 +14,35 @@ export class BudgetComponent {
 
     @Input() budget: Budget;
     private description: string = "Some description";
-    private isEditing: boolean = false;
-    private isDeleting: boolean = false;
+    private isSelectedForDeletion: boolean = false;
     private isMousedOver: boolean = false;
 
-    constructor(private budgetService: BudgetService) {}
+    constructor(private budgetService: BudgetService, private snackBar: MatSnackBar) {}
 
-    public commit() {
-        if (this.isEditing) {
-            this.budgetService.update(this.budget);
-        }
-        else if (this.isDeleting) {
-            this.budgetService.delete(this.budget);
-        }
+    public selectForDeletion() {
+        this.isSelectedForDeletion = true;
+    }
 
+    public delete() {
+        this.budgetService.delete(this.budget)
+            .toPromise()
+            .then(budget => this.showNotification(`Budget ${budget.name}`, 'Deleted'));
         this.clearFlags();
     }
 
-    private clearFlags() {
-        this.isEditing = false;
-        this.isDeleting = false;
-        this.isMousedOver = false;
+    private showNotification(message: string, action?: string) {
+        this.snackBar.open(message, action, {
+            duration: 3000,
+        });
     }
 
-    public startEdit() {
-        this.isEditing = true;
+    private clearFlags() {
+        this.isMousedOver = false;
+        this.isSelectedForDeletion = false;
     }
 
     public cancel() {
         this.clearFlags();
-    }
-
-    public startDelete() {
-        this.isDeleting = true;
-    }
-
-    public getConfirmButtonText() {
-        if (this.isEditing) {
-            return "Save";
-        }
-        else if (this.isDeleting) {
-            return "Delete";
-        }
     }
 
     public setMousedOver() {
@@ -66,10 +54,6 @@ export class BudgetComponent {
     }
 
     public shouldShowIcons() {
-        return !this.shouldShowConfirmation() && this.isMousedOver;
-    }
-
-    public shouldShowConfirmation() {
-        return this.isEditing || this.isDeleting;
+        return this.isMousedOver;
     }
 }

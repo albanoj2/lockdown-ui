@@ -1,38 +1,12 @@
-<div class="budget" (mouseover)="setMousedOver()" (mouseleave)="setNotMousedOver()">
-    <div class="body">
-        <div class="info">
-            <div class="name-container" [ngSwitch]="isEditing">
-                <!-- If not editing name -->
-                <div class="info-display" *ngSwitchCase="false">
-                    <div class="name">{{budget.name}}</div>
-                    <div class="description">{{description}}</div>
-                </div>
-                
-                <!-- If editing name -->
-                <div class="info-edit" *ngSwitchCase="true">
-                    <form class="edit-budget-name-form">
-                        <mat-form-field class="full-width">
-                            <input matInput placeholder="Name" name="budgetName" [(ngModel)]="budget.name">
-                        </mat-form-field>
-                        <mat-form-field class="full-width">
-                            <textarea matInput placeholder="Description" name="budgetDescription" [(ngModel)]="description"></textarea>
-                        </mat-form-field>
-                    </form>
-                </div> 
-            </div>
-            <div class="amount" *ngIf="!isEditing">$1,027</div>             
-        </div>
-        <div class="icons" *ngIf="shouldShowIcons()">
-            <span class="icon edit material-icons" (click)="startEdit()">edit</span>
-            <span class="icon delete material-icons" (click)="startDelete()">delete</span>
-        </div>
+<mat-list-item class="budget"
+    (mouseover)="setMousedOver()" 
+    (mouseleave)="setNotMousedOver()" 
+    (blur)="cancel()">
+
+    <h3 mat-line class="primary-text">{{budget.name}}</h3>
+    <p mat-line class="secondary-text">{{description}}</p>
+
+    <div class="icons" *ngIf="shouldShowIcons()">
+        <span class="icon delete material-icons" (click)="delete()">delete_outline</span>
     </div>
-    <div class="confirmation" *ngIf="shouldShowConfirmation()">
-        <div class="button confirm" [ngClass]="{'save': isEditing, 'delete': isDeleting}" (click)="commit()">
-            <div class="text">{{getConfirmButtonText()}}</div>
-        </div>
-        <div class="button cancel" (click)="cancelEdit()">
-            <div class="text">Cancel</div>
-        </div>
-    </div>
-</div>
+</mat-list-item>

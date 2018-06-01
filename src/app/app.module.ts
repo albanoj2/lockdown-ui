@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,10 @@ import { BudgetComponent } from './budgets/budget.component';
         BrowserModule,
         BrowserAnimationsModule,
         MatInputModule,
+        MatSnackBarModule,
+        MatButtonModule,
+        MatListModule,
+        MatIconModule,
         AppRoutingModule,
         HttpClientModule,
     ],
