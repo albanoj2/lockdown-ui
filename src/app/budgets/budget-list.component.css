@@ -1,0 +1,17 @@
+.budget-list .title {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: #444444;
+    font-size: 24px;
+}
+
+.budget-instance {
+    background-color: #ffffff;
+    border-top: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+    border-left: 1px solid #d0d0d0;
+}
+
+.budget-instance:first-child { 
+    border-top: none;
+}

@@ -4,7 +4,10 @@ import { Budget } from './budget';
 
 @Component({
     selector: 'budget-list',
-    templateUrl: 'budget-list.component.html'
+    templateUrl: 'budget-list.component.html',
+    styleUrls: [
+        'budget-list.component.css'
+    ]
 })
 export class BudgetListComponent implements OnInit {
 
@@ -14,6 +17,8 @@ export class BudgetListComponent implements OnInit {
 
     public ngOnInit() {
         this.loadBudgetList();
+        this.budgetService.whenUpdated().subscribe(updatedBudget => this.loadBudgetList());
+        this.budgetService.whenDeleted().subscribe(updatedBudget => this.loadBudgetList());
     }
 
     private loadBudgetList() {

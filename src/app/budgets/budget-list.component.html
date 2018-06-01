@@ -1,5 +1,14 @@
-<ol>
-    <li *ngFor="let budget of budgets">{{budget.id}}: {{budget.name}}</li>
-</ol>
+<div class="budget-list">
+    <div class="title">Budgets</div>
+    <div class="budgets">
+        <div class="budget-instance" *ngFor="let budget of budgets">
+            <budget [budget]="budget"></budget>
+        </div>
+    </div>
 
-<button (click)="createBudget()">Create budget</button>
+    <!-- <button (click)="createBudget()">Create budget</button> -->
+    <div class="create" (click)="createBudget()">
+        <div class="dot">+</div>
+        <div class="link">Create Budget</div>
+    </div>
+</div>
