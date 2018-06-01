@@ -5,12 +5,17 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { AccountsComponent } from './accounts/accounts.component';
+import { BudgetsComponent } from './budgets/budgets.component';
+import { BudgetListComponent } from './budgets/budget-list.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        AccountsComponent
+        AccountsComponent,
+        BudgetsComponent,
+        BudgetListComponent
     ],
     imports: [
         FormsModule,

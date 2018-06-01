@@ -1,0 +1,5 @@
+<ol>
+    <li *ngFor="let budget of budgets">{{budget.id}}: {{budget.name}}</li>
+</ol>
+
+<button (click)="createBudget()">Create budget</button>
