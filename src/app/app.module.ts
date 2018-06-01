@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { BudgetsComponent } from './budgets/budgets.component';
 import { BudgetListComponent } from './budgets/budget-list.component';
+import { NavbarComponent } from './navbar.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AccountsComponent,
+        NavbarComponent,
         BudgetsComponent,
         BudgetListComponent
     ],
