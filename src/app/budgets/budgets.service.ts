@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
  
-import { Budget } from './budget';
+import { Budget, BudgetWithItems, BudgetItem } from './budget';
 import { Service } from '../service/service';
 
 const httpOptions = {
@@ -51,5 +51,23 @@ export class BudgetService extends Service<Budget> {
 
     public createBudget(budget: Budget): Observable<Budget> {
         return this.http.post<Budget>(this.baseUrl, budget, httpOptions);
+    }
+
+    public findByIdWithItems(id: string): Promise<BudgetWithItems> {
+
+        return new Promise((resolve, reject) => {
+            Promise.all([
+                this.findById(id).toPromise(),
+                this.findItemsById(id).toPromise()
+            ])
+            .then(results => {
+                let budgetWithItems = new BudgetWithItems(results[0], results[1]);
+                resolve(budgetWithItems);
+            });
+        });
+    }
+
+    public findItemsById(id: string): Observable<BudgetItem[]> {
+        return this.http.get<BudgetItem[]>(`${this.baseUrl}/${id}/item`);
     }
 }

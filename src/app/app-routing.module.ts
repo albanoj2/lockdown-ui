@@ -5,7 +5,8 @@ import { BudgetsComponent } from './budgets/budgets.component';
 
 const routes: Routes = [
     { path: 'accounts', component: AccountsComponent },
-    { path: 'budgets', component: BudgetsComponent }
+    { path: 'budgets', component: BudgetsComponent },
+    { path: 'budgets/:budgetId', component: BudgetsComponent }
 ];
 
 @NgModule({

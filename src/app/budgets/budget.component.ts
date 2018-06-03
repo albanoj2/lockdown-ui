@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
-import { Budget } from './budget';
+import { Component, OnInit } from '@angular/core';
 import { BudgetService } from './budgets.service';
+import { Budget, BudgetWithItems, BudgetItem } from './budget';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'budget',
@@ -10,50 +11,37 @@ import { BudgetService } from './budgets.service';
         'budget.component.css'
     ]
 })
-export class BudgetComponent {
+export class BudgetComponent implements OnInit {
 
-    @Input() budget: Budget;
-    private description: string = "Some description";
-    private isSelectedForDeletion: boolean = false;
-    private isMousedOver: boolean = false;
+    displayedColumns = ['name', 'description', 'amount', 'accumulated', 'amountRemaining', 'percentRemaining', 'percentOfBudget'];
+    private budget: BudgetWithItems;
+    private paramsSubscription: Subscription;
 
-    constructor(private budgetService: BudgetService, private snackBar: MatSnackBar) {}
+    constructor(
+        private route: ActivatedRoute, 
+        private budgetService: BudgetService
+    ) {}
 
-    public selectForDeletion() {
-        this.isSelectedForDeletion = true;
-    }
+    public ngOnInit() {
+        this.paramsSubscription = this.route.params.subscribe(params => {
 
-    public delete() {
-        this.budgetService.delete(this.budget)
-            .toPromise()
-            .then(budget => this.showNotification(`Budget ${budget.name}`, 'Deleted'));
-        this.clearFlags();
-    }
+            let budgetId = params['budgetId'];
 
-    private showNotification(message: string, action?: string) {
-        this.snackBar.open(message, action, {
-            duration: 3000,
+            if (budgetId !== undefined) {
+                this.budgetService.findByIdWithItems(budgetId)
+                    .then(budget => this.budget = budget);
+            }
+            else {
+                this.budget = undefined;
+            }
         });
     }
 
-    private clearFlags() {
-        this.isMousedOver = false;
-        this.isSelectedForDeletion = false;
+    ngOnDestroy() {
+        this.paramsSubscription.unsubscribe();
     }
 
-    public cancel() {
-        this.clearFlags();
-    }
-
-    public setMousedOver() {
-        this.isMousedOver = true;
-    }
-
-    public setNotMousedOver() {
-        this.isMousedOver = false;
-    }
-
-    public shouldShowIcons() {
-        return this.isMousedOver;
+    public getAmountAsDecimal(item: BudgetItem): number {
+        return item.amountPerFrequency / 100.0; 
     }
 }

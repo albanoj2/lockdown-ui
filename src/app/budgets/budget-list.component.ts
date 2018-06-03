@@ -27,7 +27,7 @@ export class BudgetListComponent implements OnInit {
     }
 
     public createBudget() {
-        let budget = new Budget("foo");
+        let budget = new Budget("foo", "Some test budget description");
         this.budgetService.createBudget(budget)
             .toPromise()
             .then(budget => this.loadBudgetList());

@@ -1,0 +1,23 @@
+.budget-list-entry {
+    position: relative;
+    width: 100%;
+}
+
+.budget-list-entry:hover {
+    cursor: pointer;
+}
+
+.budget-list-entry .icons {
+    position: absolute;
+    color: #686868;
+    bottom: 5px;
+    right: 5px;
+}
+
+.budget-list-entry .icons .icon:hover {
+    cursor: pointer;
+}
+
+.budget-list-entry .icons .icon.delete:hover {
+    color: #d11818;
+}
