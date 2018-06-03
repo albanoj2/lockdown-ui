@@ -18,3 +18,67 @@ table.budget-items {
 .budget-item .description {
     width: 400px;
 }
+
+
+table {
+    border-spacing: 0;
+}
+
+table tr th {
+    color: rgba(0,0,0,.54);
+    font-size: 12px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+table tr th,
+table tr td {
+    padding-left: 15px;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    padding-right: 15px;
+}
+
+table tr th.title {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 11px;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0,0,0,.20);
+}
+
+table tr .left-align {
+    text-align: left;
+}
+
+table tr .name {
+    width: 150px;
+}
+
+table tr .money {
+    text-align: right;
+    width: 90px;
+}
+
+table tr .percent {
+    text-align: center;
+    width: 50px;
+}
+
+table tr.last-heading th {
+    border-bottom: 1px solid rgba(0,0,0,.20);
+}
+
+table tr td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,.20);
+}
+
+table tr td.positive {
+    color: #2E7D32;
+}

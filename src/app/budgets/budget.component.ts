@@ -44,4 +44,21 @@ export class BudgetComponent implements OnInit {
     public getAmountAsDecimal(item: BudgetItem): number {
         return item.amountPerFrequency / 100.0; 
     }
+
+    public getWeeklyBudgetItems(): BudgetItem[] {
+        return this.getBudgetItemsWithFrequency('WEEKLY');
+    }
+
+    public getMonthlyBudgetItems(): BudgetItem[] {
+        return this.getBudgetItemsWithFrequency('MONTHLY');
+    }
+
+    private getBudgetItemsWithFrequency(frequency: string): BudgetItem[] {
+        if (this.budget === undefined) {
+            return [];
+        }
+        else {
+            return this.budget.items.filter(item => item.frequency == frequency);
+        }
+    }
 }

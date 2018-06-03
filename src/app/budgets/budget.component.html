@@ -1,6 +1,53 @@
 <h1>{{budget?.name}}</h1>
 
-<table mat-table [dataSource]="budget?.items" class="mat-elevation-z8 budget-items">
+<table width="100%">
+    <!-- <tr>
+        <th></th>
+        <th></th>
+        <th colspan="3">Amount</th>
+        <th></th>
+        <th colspan="2">Transactions</th>
+        <th colspan="2">Remaining</th>
+    </tr> -->
+    <tr class="last-heading">
+        <th class="left-align">Name</th>
+        <th class="left-align">Description</th>
+        <th class="money">Amount</th>
+        <!-- <th>Yearly Amount</th> -->
+        <!-- <th>Budget</th> -->
+        <th class="money">Accumulated</th>
+        <th class="money">Deposited</th>
+        <th class="money">Expensed</th>
+        <th class="money">Remaining</th>
+        <!-- <th>Percent</th> -->
+    </tr>
+    <tr>
+        <th colspan="42" class="title">Weekly</th>
+    </tr>
+    <tr *ngFor="let item of getWeeklyBudgetItems()">
+        <td class="name">{{item.name}}</td>
+        <td class="secondary-text">{{item.description}}</td>
+        <td class="money">{{getAmountAsDecimal(item) | currency }}</td>
+        <td class="money">$4,500.00</td>
+        <td class="money">$1,000.00</td>
+        <td class="money">$3,476.00</td>
+        <td class="money positive">$5,040.87</td>
+    </tr>
+    <tr>
+        <th colspan="42" class="title">Monthly</th>
+    </tr>
+    <tr *ngFor="let item of getMonthlyBudgetItems()">
+        <td class="name">{{item.name}}</td>
+        <td class="secondary-text">{{item.description}}</td>
+        <td class="money">{{getAmountAsDecimal(item) | currency }}</td>
+        <td class="money">$4,500.00</td>
+        <td class="money">$1,000.00</td>
+        <td class="money">$3,476.00</td>
+        <td class="money positive">$5,040.87</td>
+    </tr>
+</table>
+
+<!-- <table mat-table [dataSource]="budget?.items" class="mat-elevation-z8 budget-items">
     
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -39,4 +86,4 @@
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</table> -->

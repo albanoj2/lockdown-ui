@@ -22,6 +22,7 @@ export class BudgetItem {
     public name: string;
     public description: string;
     public amountPerFrequency: number;
+    public frequency: string;
     public start: string;
     public end: string;
     public isActive: boolean;
