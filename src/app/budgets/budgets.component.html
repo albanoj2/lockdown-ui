@@ -4,9 +4,22 @@
         <div style="flex: 25%">
             <budget-list></budget-list>
         </div>
-        <div style="flex: 75%; margin-left: 20px; margin-right: 50px;">
+        <div style="flex: 75%;">
             <budget></budget>
         </div>
     </div>
     
+    <eco-fab-speed-dial (mouseenter)="openSpeedDial()" (mouseleave)="closeSpeedDial()" [(open)]="isSpeedDialOpen" animationMode="scale">
+        <eco-fab-speed-dial-trigger spin="true">
+            <button mat-fab matTooltip="Create a new budget" (click)="createBudget()">
+                <mat-icon *ngIf="!isSpeedDialOpen">add</mat-icon>
+                <span *ngIf="isSpeedDialOpen">B</span>
+            </button>
+        </eco-fab-speed-dial-trigger>
+    
+        <eco-fab-speed-dial-actions>
+            <button mat-mini-fab matTooltip="Create a new monthly budget item" (click)="createMonthlyBudgetItem()">M</button>
+            <button mat-mini-fab matTooltip="Create a new weekly budget item" (click)="createWeeklyBudgetItem()">W</button>
+        </eco-fab-speed-dial-actions>
+    </eco-fab-speed-dial>
 </div>

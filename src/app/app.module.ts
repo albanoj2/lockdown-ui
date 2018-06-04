@@ -18,6 +18,8 @@ import { BudgetItemComponent } from './budgets/budget-item.component';
 import { CreateBudgetItemDialog } from './budgets/dialog/create-budget-item.dialog.component';
 import { DeleteBudgetDialog } from './budgets/dialog/delete-budget.dialog.component';
 
+import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -44,6 +46,7 @@ import { DeleteBudgetDialog } from './budgets/dialog/delete-budget.dialog.compon
         MatDialogModule,
         MatRadioModule,
         MatTooltipModule,
+        EcoFabSpeedDialModule,
         AppRoutingModule,
         HttpClientModule,
     ],
