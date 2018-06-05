@@ -15,7 +15,7 @@ import { NavbarComponent } from './navbar.component';
 import { BudgetListEntryComponent } from './budgets/budget-list-entry.component';
 import { BudgetComponent } from './budgets/budget.component';
 import { BudgetItemComponent } from './budgets/budget-item.component';
-import { CreateBudgetItemDialog } from './budgets/dialog/create-budget-item.dialog.component';
+import { SaveBudgetItemDialog } from './budgets/dialog/save-budget-item.dialog.component';
 import { DeleteBudgetDialog } from './budgets/dialog/delete-budget.dialog.component';
 
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
@@ -32,7 +32,7 @@ import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component'
         BudgetListEntryComponent,
         BudgetComponent,
         BudgetItemComponent,
-        CreateBudgetItemDialog,
+        SaveBudgetItemDialog,
         SaveBudgetDialog,
         DeleteBudgetDialog
     ],
@@ -56,7 +56,7 @@ import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component'
         ReactiveFormsModule
     ],
     entryComponents: [
-        CreateBudgetItemDialog,
+        SaveBudgetItemDialog,
         SaveBudgetDialog,
         DeleteBudgetDialog
     ],

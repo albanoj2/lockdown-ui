@@ -18,7 +18,7 @@
         </div>
     </div>
     
-    <table width="100%" *ngIf="hasItems()">
+    <table width="100%">
         <tr class="last-heading">
             <th class="left-align">Name</th>
             <th class="left-align">Description</th>
@@ -28,7 +28,7 @@
             <th class="money">Expensed</th>
             <th class="money">Remaining</th>
         </tr>
-        <tr *ngIf="hasWeeklyItems()">
+        <tr>
             <th colspan="42" class="title">Weekly</th>
         </tr>
         <tr class="item"*ngFor="let budgetItemSnapshot of getWeeklyBudgetItems()">
@@ -40,7 +40,7 @@
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.expensed) | currency }}</td>
             <td class="money positive">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
         </tr>
-        <tr *ngIf="hasMonthlyItems()">
+        <tr>
             <th colspan="42" class="title">Monthly</th>
         </tr>
         <tr class="item" *ngFor="let budgetItemSnapshot of getMonthlyBudgetItems()">

@@ -32,4 +32,18 @@ export class BudgetItem {
     public start: string;
     public end: string;
     public isActive: boolean;
+
+    public static copy(item: BudgetItem): BudgetItem {
+        let copy = new BudgetItem();
+        copy.id = item.id;
+        copy.name = item.name;
+        copy.description = item.description;
+        copy.amountPerFrequency = item.amountPerFrequency;
+        copy.frequency = item.frequency;
+        copy.start = item.start;
+        copy.end = item.end;
+        copy.isActive = item.isActive;
+
+        return copy;
+    }
 }

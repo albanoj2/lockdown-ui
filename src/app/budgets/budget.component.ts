@@ -8,6 +8,7 @@ import { BudgetSnapshotService } from './budget-snapshot.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { DeleteBudgetDialog } from './dialog/delete-budget.dialog.component';
 import { SaveBudgetPayload, SaveBudgetDialog } from './dialog/save-budget.dialog.component';
+import { BudgetItemService } from './budget-item.service';
 
 @Component({
     selector: 'budget',
@@ -20,11 +21,13 @@ export class BudgetComponent implements OnInit {
 
     private snapshot: BudgetSnapshot;
     private paramsSubscription: Subscription;
+    private budgetItemsChangedSubscription: Subscription;
 
     constructor(
         private route: ActivatedRoute, 
         private router: Router,
         private budgetService: BudgetService,
+        private budgetItemService: BudgetItemService,
         private budgetSnapshotService: BudgetSnapshotService,
         private snackBar: MatSnackBar,
         private dialog: MatDialog
@@ -36,13 +39,25 @@ export class BudgetComponent implements OnInit {
             let budgetId = params['budgetId'];
 
             if (budgetId !== undefined) {
-                this.budgetSnapshotService.findById(budgetId)
-                    .subscribe(snapshot => this.snapshot = snapshot);
+                this.reloadBudget(budgetId);
+
+                if (this.budgetItemsChangedSubscription) {
+                    this.budgetItemsChangedSubscription.unsubscribe();
+                }
+
+                this.budgetItemsChangedSubscription = this.budgetItemService.onBudgetItemsChanged(budgetId)
+                    .subscribe(_ => {
+                        this.reloadBudget(budgetId);
+                    });
             }
             else {
                 this.snapshot = undefined;
             }
         });
+    }
+
+    private reloadBudget(budgetId: string) {
+        this.budgetSnapshotService.findById(budgetId).subscribe(snapshot => this.snapshot = snapshot);
     }
 
     ngOnDestroy() {
@@ -70,7 +85,7 @@ export class BudgetComponent implements OnInit {
             return [];
         }
         else {
-            return this.snapshot.budgetItems.filter(snapshot => snapshot.budgetItem.frequency == frequency);
+            return this.snapshot.budgetItems.filter(budgetItemSnapshot => budgetItemSnapshot.budgetItem.frequency == frequency);
         }
     }
 
@@ -111,17 +126,5 @@ export class BudgetComponent implements OnInit {
                     });
             }
         });
-    }
-
-    public hasItems(): boolean {
-        return this.hasMonthlyItems() || this.hasWeeklyItems();
-    }
-
-    public hasMonthlyItems(): boolean {
-        return this.getMonthlyBudgetItems().length > 0;
-    }
-
-    public hasWeeklyItems(): boolean {
-        return this.getWeeklyBudgetItems().length > 0;
     }
 }

@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { SaveBudgetDialog, SaveBudgetPayload } from './dialog/save-budget.dialog.component';
 import { BudgetService } from './budgets.service';
-import { Router } from '@angular/router';
-import { Budget } from './budget';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Budget, BudgetItem } from './budget';
+import { SaveBudgetItemPayload, SaveBudgetItemDialog } from './dialog/save-budget-item.dialog.component';
+import { BudgetItemService } from './budget-item.service';
 
 @Component({
     selector: 'budgets',
@@ -12,14 +14,23 @@ import { Budget } from './budget';
         'budgets.component.css'
     ]
 })
-export class BudgetsComponent {
+export class BudgetsComponent implements OnInit {
 
+    private budgetId: string;
     private isSpeedDialOpen: boolean = false;
 
     constructor(
         public dialog: MatDialog, 
         private budgetService: BudgetService,
+        private budgetItemService: BudgetItemService,
+        private route: ActivatedRoute,
         private router: Router) {}
+
+    public ngOnInit() {
+        this.route.params.subscribe(params => {
+            this.budgetId = params['budgetId'];
+        });
+    }
 
     public openSpeedDial() {
         this.isSpeedDialOpen = true;
@@ -45,10 +56,26 @@ export class BudgetsComponent {
     }
 
     public createMonthlyBudgetItem() {
-        console.log("Create monthly budget item");
+        this.createBudgetItem('MONTHLY');
     }
 
     public createWeeklyBudgetItem() {
-        console.log("Create weekly budget item");
+        this.createBudgetItem('WEEKLY');
+    }
+
+    private createBudgetItem(frequency: string) {
+        let budgetItem = new BudgetItem();
+        budgetItem.frequency = frequency;
+
+        let dialogRef = this.dialog.open(SaveBudgetItemDialog, {
+            data: new SaveBudgetItemPayload('Create a Budget Item', 'Create', budgetItem)
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {            
+            if (result.shouldSave) {
+                this.budgetItemService.create(this.budgetId, result.budgetItem)
+                    .then(createdBudgetItem => console.log(createdBudgetItem));
+            }
+        });
     }
 }
