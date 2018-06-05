@@ -4,9 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
  
-import { Budget, BudgetWithItems, BudgetItem } from './budget';
-import { Service } from '../service/service';
-import { BudgetSnapshot } from './budget-snapshot';
+import { Budget, BudgetWithItems, BudgetItem } from '../domain/budget';
+import { Service } from '../../common/service/service';
+import { BudgetSnapshot } from '../domain/budget-snapshot';
 
 const httpOptions = {
     headers: new HttpHeaders({

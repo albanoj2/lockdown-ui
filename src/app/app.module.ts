@@ -16,7 +16,7 @@ import { BudgetListEntryComponent } from './budgets/budget-list-entry.component'
 import { BudgetComponent } from './budgets/budget.component';
 import { BudgetItemComponent } from './budgets/budget-item.component';
 import { SaveBudgetItemDialog } from './budgets/dialog/save-budget-item.dialog.component';
-import { DeleteBudgetDialog } from './budgets/dialog/delete-budget.dialog.component';
+import { DeleteDialog } from './common/dialog/delete.dialog.component';
 
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component';
@@ -34,7 +34,7 @@ import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component'
         BudgetItemComponent,
         SaveBudgetItemDialog,
         SaveBudgetDialog,
-        DeleteBudgetDialog
+        DeleteDialog
     ],
     imports: [
         FormsModule,
@@ -58,7 +58,7 @@ import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component'
     entryComponents: [
         SaveBudgetItemDialog,
         SaveBudgetDialog,
-        DeleteBudgetDialog
+        DeleteDialog
     ],
     providers: [],
     bootstrap: [AppComponent]

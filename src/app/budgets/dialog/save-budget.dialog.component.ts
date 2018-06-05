@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Budget } from '../budget';
+import { Budget } from '../domain/budget';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 

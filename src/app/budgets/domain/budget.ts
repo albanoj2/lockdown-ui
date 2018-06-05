@@ -1,4 +1,4 @@
-import { Link } from "../service/link";
+import { Link } from "../../common/domain/link";
 
 export class Budget {
 

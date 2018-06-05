@@ -15,6 +15,10 @@
     margin-top: 15px;
 }
 
+.heading .settings .settings-icon {
+    color: #686868;
+}
+
 table.budget-items {
     box-shadow: none;
     width: 100%;
@@ -49,12 +53,13 @@ table tr th {
 }
 
 table tr th,
-table tr td {
+td {
     padding-left: 15px;
 }
 
 table tr th:last-child,
-table tr td:last-child {
+td:last-child
+ {
     padding-right: 15px;
 }
 
@@ -67,20 +72,20 @@ table tr th.title {
     border-bottom: 1px solid rgba(0,0,0,.20);
 }
 
-table tr .left-align {
+.left-align {
     text-align: left;
 }
 
-table tr .name {
+.name {
     width: 150px;
 }
 
-table tr .money {
+.money {
     text-align: right;
     width: 90px;
 }
 
-table tr .percent {
+.percent {
     text-align: center;
     width: 50px;
 }
@@ -89,16 +94,16 @@ table tr.last-heading th {
     border-bottom: 1px solid rgba(0,0,0,.20);
 }
 
-table tr td {
+td {
     padding-top: 16px;
     padding-bottom: 16px;
 }
 
-table tr.item td {
+.item td {
     background-color: #ffffff;
     border-bottom: 1px solid rgba(0,0,0,.20);
 }
 
-table tr td.positive {
+td.positive {
     color: #2E7D32;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BudgetService } from './budgets.service';
-import { Budget } from './budget';
+import { BudgetService } from './service/budget.service';
+import { Budget } from './domain/budget';
 
 @Component({
     selector: 'budget-list',

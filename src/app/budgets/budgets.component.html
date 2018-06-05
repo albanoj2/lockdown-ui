@@ -1,5 +1,5 @@
 
-<div class="list full-height" style="width: 100%">
+<div class="list">
     <div class="budget-container">
         <div class="budgets">
             <budget-list class="full-height"></budget-list>
@@ -8,33 +8,32 @@
             <budget></budget>
         </div>
     </div>
-    
-    <eco-fab-speed-dial (mouseenter)="openSpeedDial()" (mouseleave)="closeSpeedDial()" [(open)]="isSpeedDialOpen" animationMode="scale">
-        <eco-fab-speed-dial-trigger spin="true">
-            <button mat-fab class="budget-create" 
-                matTooltip="Create a new budget"
-                matTooltipPosition="left"
-                (click)="createBudget()">
-                <mat-icon *ngIf="!isSpeedDialOpen">add</mat-icon>
-                <span *ngIf="isSpeedDialOpen">B</span>
-            </button>
-        </eco-fab-speed-dial-trigger>
-    
-        <eco-fab-speed-dial-actions>
-            <button mat-mini-fab 
-                class="budget-create-monthly-item"
-                matTooltip="Create a new monthly budget item"
-                matTooltipPosition="left"
-                (click)="createMonthlyBudgetItem()">
-                M
-            </button>
-            <button mat-mini-fab 
-                class="budget-create-weekly-item" 
-                matTooltip="Create a new weekly budget item"
-                matTooltipPosition="left"
-                (click)="createWeeklyBudgetItem()">
-                W
-            </button>
-        </eco-fab-speed-dial-actions>
-    </eco-fab-speed-dial>
-</div>
+</div>  
+<eco-fab-speed-dial (mouseenter)="openSpeedDial()" (mouseleave)="closeSpeedDial()" [(open)]="isSpeedDialOpen" animationMode="scale">
+    <eco-fab-speed-dial-trigger spin="true">
+        <button mat-fab class="budget-create" 
+            matTooltip="Create a new budget"
+            matTooltipPosition="left"
+            (click)="createBudget()">
+            <mat-icon *ngIf="!isSpeedDialOpen">add</mat-icon>
+            <span *ngIf="isSpeedDialOpen">B</span>
+        </button>
+    </eco-fab-speed-dial-trigger>
+
+    <eco-fab-speed-dial-actions>
+        <button mat-mini-fab 
+            class="budget-create-monthly-item"
+            matTooltip="Create a new monthly budget item"
+            matTooltipPosition="left"
+            (click)="createMonthlyBudgetItem()">
+            M
+        </button>
+        <button mat-mini-fab 
+            class="budget-create-weekly-item" 
+            matTooltip="Create a new weekly budget item"
+            matTooltipPosition="left"
+            (click)="createWeeklyBudgetItem()">
+            W
+        </button>
+    </eco-fab-speed-dial-actions>
+</eco-fab-speed-dial>

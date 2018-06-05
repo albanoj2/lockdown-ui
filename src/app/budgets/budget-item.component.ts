@@ -1,20 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BudgetService } from './budgets.service';
-import { Budget, BudgetWithItems, BudgetItem } from './budget';
+import { BudgetService } from './service/budget.service';
+import { Budget, BudgetWithItems, BudgetItem } from './domain/budget';
+import { BudgetItemSnapshot } from './domain/budget-snapshot';
 
 @Component({
-    selector: 'budget-item',
-    templateUrl: 'budget-item.component.html',
-    styleUrls: [
-        'budget-item.component.css'
-    ]
+    selector: '[budget-item]',
+    templateUrl: 'budget-item.component.html'
 })
 export class BudgetItemComponent {
 
-    @Input() item: BudgetItem;
+    @Input() snapshot: BudgetItemSnapshot;
 
-    public getAmountAsDecimal(): number {
-        console.log(this);
-        return this.item.amountPerFrequency / 100.0; 
+    public asDecimalDollars(cents: number) {
+        return cents / 100.0;
     }
 }

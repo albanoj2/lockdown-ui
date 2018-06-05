@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { SaveBudgetDialog, SaveBudgetPayload } from './dialog/save-budget.dialog.component';
-import { BudgetService } from './budgets.service';
+import { BudgetService } from './service/budget.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Budget, BudgetItem } from './budget';
+import { Budget, BudgetItem } from './domain/budget';
 import { SaveBudgetItemPayload, SaveBudgetItemDialog } from './dialog/save-budget-item.dialog.component';
-import { BudgetItemService } from './budget-item.service';
+import { BudgetItemService } from './service/budget-item.service';
 
 @Component({
     selector: 'budgets',

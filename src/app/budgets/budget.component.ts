@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { BudgetService } from './budgets.service';
-import { Budget, BudgetWithItems, BudgetItem } from './budget';
+import { BudgetService } from './service/budget.service';
+import { Budget, BudgetWithItems, BudgetItem } from './domain/budget';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { BudgetSnapshot, BudgetItemSnapshot } from './budget-snapshot';
-import { BudgetSnapshotService } from './budget-snapshot.service';
+import { BudgetSnapshot, BudgetItemSnapshot } from './domain/budget-snapshot';
+import { BudgetSnapshotService } from './service/budget-snapshot.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { DeleteBudgetDialog } from './dialog/delete-budget.dialog.component';
+import { DeleteDialog, DeleteDialogPayload } from '../common/dialog/delete.dialog.component';
 import { SaveBudgetPayload, SaveBudgetDialog } from './dialog/save-budget.dialog.component';
-import { BudgetItemService } from './budget-item.service';
+import { BudgetItemService } from './service/budget-item.service';
 
 @Component({
     selector: 'budget',
@@ -96,7 +96,9 @@ export class BudgetComponent implements OnInit {
     }
 
     public openDeleteConfirmDialog(): void {
-        let dialogRef = this.dialog.open(DeleteBudgetDialog, {});
+        let dialogRef = this.dialog.open(DeleteDialog, {
+            data: new DeleteDialogPayload('Delete Budget?', 'Are you sure you want to delete this budget?')
+        });
 
         dialogRef.afterClosed().subscribe(shouldDelete => {
             if (shouldDelete) {
