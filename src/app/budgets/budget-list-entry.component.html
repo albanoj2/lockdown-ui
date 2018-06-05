@@ -1,13 +1,5 @@
-<mat-list-item class="budget-list-entry"
-    (mouseover)="setMousedOver()" 
-    (mouseleave)="setNotMousedOver()" 
-    (blur)="cancel()"
-    [routerLink]="['/budgets', budget.id]">
-
+<mat-list-item class="budget-list-entry" [routerLink]="['/budgets', budget.id]">
     <h3 mat-line class="primary-text">{{budget.name}}</h3>
     <p mat-line class="secondary-text">{{budget.description}}</p>
-
-    <div class="icons" *ngIf="shouldShowIcons()">
-        <span class="icon delete material-icons" (click)="openDeleteConfirmDialog()" matTooltip="Delete">delete_outline</span>
-    </div>
 </mat-list-item>
+<mat-divider></mat-divider>

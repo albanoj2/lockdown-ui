@@ -1,15 +1,24 @@
-<div *ngIf="budget !== undefined">
-    <h1>{{snapshot?.budget.name}}</h1>
-
-    <table width="100%">
-        <!-- <tr>
-            <th></th>
-            <th></th>
-            <th colspan="3">Amount</th>
-            <th></th>
-            <th colspan="2">Transactions</th>
-            <th colspan="2">Remaining</th>
-        </tr> -->
+<div *ngIf="snapshot !== undefined">
+    <div class="heading">
+        <div class="name">
+            <h1>{{snapshot?.budget.name}}</h1>
+        </div>
+        <div class="settings">
+            <div>
+                <button mat-icon-button 
+                    matTooltip="Options"
+                    [matMenuTriggerFor]="menu">
+                    <mat-icon>settings</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openEditDialog()"><mat-icon >edit</mat-icon>Edit</button>
+                    <button mat-menu-item (click)="openDeleteConfirmDialog()"><mat-icon >delete</mat-icon>Delete</button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    
+    <table width="100%" *ngIf="hasItems()">
         <tr class="last-heading">
             <th class="left-align">Name</th>
             <th class="left-align">Description</th>
@@ -19,10 +28,10 @@
             <th class="money">Expensed</th>
             <th class="money">Remaining</th>
         </tr>
-        <tr>
+        <tr *ngIf="hasWeeklyItems()">
             <th colspan="42" class="title">Weekly</th>
         </tr>
-        <tr class="item" *ngFor="let budgetItemSnapshot of getWeeklyBudgetItems()">
+        <tr class="item"*ngFor="let budgetItemSnapshot of getWeeklyBudgetItems()">
             <td class="name">{{budgetItemSnapshot.budgetItem.name}}</td>
             <td class="secondary-text">{{budgetItemSnapshot.budgetItem.description}}</td>
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.budgetItem.amountPerFrequency) | currency }}</td>
@@ -31,7 +40,7 @@
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.expensed) | currency }}</td>
             <td class="money positive">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
         </tr>
-        <tr>
+        <tr *ngIf="hasMonthlyItems()">
             <th colspan="42" class="title">Monthly</th>
         </tr>
         <tr class="item" *ngFor="let budgetItemSnapshot of getMonthlyBudgetItems()">

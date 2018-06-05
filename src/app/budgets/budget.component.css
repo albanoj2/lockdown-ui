@@ -1,3 +1,20 @@
+.heading {
+    display: flex;
+    margin-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.heading .name {
+    flex: 80%;
+}
+
+.heading .settings {
+    flex: 20%;
+    text-align: right;
+    margin-top: 15px;
+}
+
 table.budget-items {
     box-shadow: none;
     width: 100%;

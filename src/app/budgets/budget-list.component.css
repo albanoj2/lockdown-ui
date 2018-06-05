@@ -1,19 +1,19 @@
 .budget-list {
     margin-right: 40px;
+    background-color: #ffffff;
+    border-right: 1px solid #d0d0d0;
+    height: 100%;
 }
 
 .budget-list .title {
-    margin-top: 15px;
-    margin-bottom: 20px;
+    padding-top: 25px;
+    margin-bottom: 25px;
     color: #444444;
     font-size: 24px;
+    text-align: center;
 }
 
 .budget-instance {
-    background-color: #ffffff;
-    border-top: 1px solid #d0d0d0;
-    border-right: 1px solid #d0d0d0;
-    border-left: 1px solid #d0d0d0;
     padding-top: 0px;
 }
 

@@ -6,6 +6,12 @@ export class Budget {
 
     public links: Link[];
     public id: string;
+
+    public static copy(budget: Budget): Budget {
+        let copy = new Budget(budget.name, budget.description);
+        copy.id = budget.id;
+        return copy;
+    }
 }
 
 export class BudgetWithItems extends Budget {

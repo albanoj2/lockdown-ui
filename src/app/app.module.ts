@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule, MatTableModule, MatDialogModule, MatRadioModule, MatTooltipModule } from '@angular/material';
+import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule, MatTableModule, MatDialogModule, MatRadioModule, MatTooltipModule, MatMenuModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +19,8 @@ import { CreateBudgetItemDialog } from './budgets/dialog/create-budget-item.dial
 import { DeleteBudgetDialog } from './budgets/dialog/delete-budget.dialog.component';
 
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
-import { CreateBudgetDialog } from './budgets/dialog/create-budget.dialog.component';
+import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component';
+
 
 @NgModule({
     declarations: [
@@ -32,7 +33,7 @@ import { CreateBudgetDialog } from './budgets/dialog/create-budget.dialog.compon
         BudgetComponent,
         BudgetItemComponent,
         CreateBudgetItemDialog,
-        CreateBudgetDialog,
+        SaveBudgetDialog,
         DeleteBudgetDialog
     ],
     imports: [
@@ -48,6 +49,7 @@ import { CreateBudgetDialog } from './budgets/dialog/create-budget.dialog.compon
         MatDialogModule,
         MatRadioModule,
         MatTooltipModule,
+        MatMenuModule,
         EcoFabSpeedDialModule,
         AppRoutingModule,
         HttpClientModule,
@@ -55,7 +57,7 @@ import { CreateBudgetDialog } from './budgets/dialog/create-budget.dialog.compon
     ],
     entryComponents: [
         CreateBudgetItemDialog,
-        CreateBudgetDialog,
+        SaveBudgetDialog,
         DeleteBudgetDialog
     ],
     providers: [],

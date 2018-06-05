@@ -5,19 +5,9 @@
 
 .budget-list-entry:hover {
     cursor: pointer;
+    background-color: #f2f2f2;
 }
 
 .budget-list-entry .icons {
-    position: absolute;
     color: #686868;
-    bottom: 5px;
-    right: 5px;
-}
-
-.budget-list-entry .icons .icon:hover {
-    cursor: pointer;
-}
-
-.budget-list-entry .icons .icon.delete:hover {
-    color: #d11818;
 }

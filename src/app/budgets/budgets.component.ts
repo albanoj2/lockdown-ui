@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { CreateBudgetDialog } from './dialog/create-budget.dialog.component';
+import { SaveBudgetDialog, SaveBudgetPayload } from './dialog/save-budget.dialog.component';
 import { BudgetService } from './budgets.service';
 import { Router } from '@angular/router';
+import { Budget } from './budget';
 
 @Component({
     selector: 'budgets',
@@ -29,14 +30,12 @@ export class BudgetsComponent {
     }
 
     public createBudget() {
-        console.log("Create budget");
-
-        let dialogRef = this.dialog.open(CreateBudgetDialog, {});
+        let dialogRef = this.dialog.open(SaveBudgetDialog, {
+            data: new SaveBudgetPayload('Create a Budget', 'Create', new Budget('', ''))
+        });
     
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            
-            if (result.shouldCreate) {
+        dialogRef.afterClosed().subscribe(result => {            
+            if (result.shouldSave) {
                 this.budgetService.create(result.budget)
                     .subscribe(createdBudget => {
                         this.router.navigate(['budgets', createdBudget.id]);
