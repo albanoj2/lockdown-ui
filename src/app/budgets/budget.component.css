@@ -75,6 +75,9 @@ table tr.last-heading th {
 table tr td {
     padding-top: 16px;
     padding-bottom: 16px;
+}
+
+table tr.item td {
     background-color: #ffffff;
     border-bottom: 1px solid rgba(0,0,0,.20);
 }

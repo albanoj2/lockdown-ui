@@ -14,18 +14,15 @@
             <th class="left-align">Name</th>
             <th class="left-align">Description</th>
             <th class="money">Amount</th>
-            <!-- <th>Yearly Amount</th> -->
-            <!-- <th>Budget</th> -->
             <th class="money">Accumulated</th>
             <th class="money">Deposited</th>
             <th class="money">Expensed</th>
             <th class="money">Remaining</th>
-            <!-- <th>Percent</th> -->
         </tr>
         <tr>
             <th colspan="42" class="title">Weekly</th>
         </tr>
-        <tr *ngFor="let budgetItemSnapshot of getWeeklyBudgetItems()">
+        <tr class="item" *ngFor="let budgetItemSnapshot of getWeeklyBudgetItems()">
             <td class="name">{{budgetItemSnapshot.budgetItem.name}}</td>
             <td class="secondary-text">{{budgetItemSnapshot.budgetItem.description}}</td>
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.budgetItem.amountPerFrequency) | currency }}</td>
@@ -37,7 +34,7 @@
         <tr>
             <th colspan="42" class="title">Monthly</th>
         </tr>
-        <tr *ngFor="let budgetItemSnapshot of getMonthlyBudgetItems()">
+        <tr class="item" *ngFor="let budgetItemSnapshot of getMonthlyBudgetItems()">
             <td class="name">{{budgetItemSnapshot.budgetItem.name}}</td>
             <td class="secondary-text">{{budgetItemSnapshot.budgetItem.description}}</td>
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.budgetItem.amountPerFrequency) | currency }}</td>
@@ -46,5 +43,17 @@
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.expensed) | currency }}</td>
             <td class="money positive">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
         </tr>
+        <tr>
+            <th colspan="42" class="title">Total</th>
+        </tr>
+        <tr class="totals">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="money">{{ asDecimalDollars(snapshot?.totalAccumulated) | currency }}</td>
+                <td class="money">{{ asDecimalDollars(snapshot?.totalDeposited) | currency }}</td>
+                <td class="money">{{ asDecimalDollars(snapshot?.totalExpensed) | currency }}</td>
+                <td class="money positive">{{ asDecimalDollars(snapshot?.totalRemaining) | currency }}</td>
+            </tr>
     </table>
 </div>
