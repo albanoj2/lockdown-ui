@@ -1,3 +1,15 @@
 .list {
     width: 400px;
 }
+
+.eco-opened .budget-create {
+    background-color: rgb(36, 36, 36);
+}
+
+.eco-opened .budget-create-monthly-item {
+    background-color: #735197;
+}
+
+.eco-opened .budget-create-weekly-item {
+    background-color: #00897b;
+}

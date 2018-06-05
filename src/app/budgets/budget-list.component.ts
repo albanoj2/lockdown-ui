@@ -17,6 +17,7 @@ export class BudgetListComponent implements OnInit {
 
     public ngOnInit() {
         this.loadBudgetList();
+        this.budgetService.whenCreated().subscribe(updatedBudget => this.loadBudgetList());
         this.budgetService.whenUpdated().subscribe(updatedBudget => this.loadBudgetList());
         this.budgetService.whenDeleted().subscribe(updatedBudget => this.loadBudgetList());
     }
@@ -24,12 +25,5 @@ export class BudgetListComponent implements OnInit {
     private loadBudgetList() {
         this.budgetService.getBudgets()
             .subscribe(budgets => this.budgets = budgets);
-    }
-
-    public createBudget() {
-        let budget = new Budget("foo", "Some test budget description");
-        this.budgetService.createBudget(budget)
-            .toPromise()
-            .then(budget => this.loadBudgetList());
     }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule, MatTableModule, MatDialogModule, MatRadioModule, MatTooltipModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,7 @@ import { CreateBudgetItemDialog } from './budgets/dialog/create-budget-item.dial
 import { DeleteBudgetDialog } from './budgets/dialog/delete-budget.dialog.component';
 
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
+import { CreateBudgetDialog } from './budgets/dialog/create-budget.dialog.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
         BudgetComponent,
         BudgetItemComponent,
         CreateBudgetItemDialog,
+        CreateBudgetDialog,
         DeleteBudgetDialog
     ],
     imports: [
@@ -49,9 +51,11 @@ import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
         EcoFabSpeedDialModule,
         AppRoutingModule,
         HttpClientModule,
+        ReactiveFormsModule
     ],
     entryComponents: [
         CreateBudgetItemDialog,
+        CreateBudgetDialog,
         DeleteBudgetDialog
     ],
     providers: [],
