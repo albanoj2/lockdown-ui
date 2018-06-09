@@ -38,7 +38,7 @@ export class BudgetService extends Service<Budget> {
     }
 
     protected updateElement(element: Budget): Observable<Budget> {
-        return this.http.put<Budget>(`${this.baseUrl}/${element.id}`, element, httpOptions);
+        return this.http.patch<Budget>(`${this.baseUrl}/${element.id}`, element, httpOptions);
     }
 
     protected deleteElement(element: Budget): Observable<any> {

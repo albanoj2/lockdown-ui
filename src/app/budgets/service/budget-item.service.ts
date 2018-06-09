@@ -35,6 +35,26 @@ export class BudgetItemService {
         });
     }
 
+    public delete(budgetId: string, item: BudgetItem): Promise<BudgetItem> {
+        return new Promise((accept, reject) => {
+            this.http.delete<BudgetItem>(`${this.baseUrl}/${budgetId}/item/${item.id}`, httpOptions)
+                .subscribe(_ => {
+                    this.changedSubjectFor(budgetId).next();
+                    accept(item);
+                });
+        });
+    }
+
+    public update(budgetId: string, item: BudgetItem): Promise<BudgetItem> {
+        return new Promise((accept, reject) => {
+            this.http.put<BudgetItem>(`${this.baseUrl}/${budgetId}/item/${item.id}`, item, httpOptions)
+                .subscribe(updatedItem => {
+                    this.changedSubjectFor(budgetId).next();
+                    accept(updatedItem);
+                });
+        });
+    }
+
     public onBudgetItemsChanged(budgetId: string): Subject<void> {
         return this.changedSubjectFor(budgetId);
     }

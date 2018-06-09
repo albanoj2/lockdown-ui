@@ -57,9 +57,8 @@ td {
     padding-left: 15px;
 }
 
-table tr th:last-child,
-td:last-child
- {
+table tr th.remaining,
+td.remaining {
     padding-right: 15px;
 }
 
@@ -69,6 +68,9 @@ table tr th.title {
     font-size: 11px;
     text-align: left;
     text-transform: uppercase;
+}
+
+table tr th.title:not(.options) {
     border-bottom: 1px solid rgba(0,0,0,.20);
 }
 
@@ -90,7 +92,7 @@ table tr th.title {
     width: 50px;
 }
 
-table tr.last-heading th {
+table tr.last-heading th:not(.options) {
     border-bottom: 1px solid rgba(0,0,0,.20);
 }
 
@@ -99,11 +101,16 @@ td {
     padding-bottom: 16px;
 }
 
-.item td {
+.item td:not(.options) {
     background-color: #ffffff;
     border-bottom: 1px solid rgba(0,0,0,.20);
 }
 
 td.positive {
     color: #2E7D32;
+}
+
+td.options {
+    width: 20px;
+    padding: 0px 0px 0px 5px;
 }

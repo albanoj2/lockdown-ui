@@ -22,7 +22,7 @@ export class SaveBudgetItemDialog {
         this.formGroup = this.builder.group({
             name: [this.payload.budgetItem.name, Validators.required],
             description: [this.payload.budgetItem.description, Validators.required],
-            amount: [this.payload.budgetItem.amountPerFrequency, Validators.required]
+            amount: [this.payload.budgetItem.amountPerFrequency / 100, Validators.required]
         });
     }
   
