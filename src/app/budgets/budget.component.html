@@ -26,65 +26,36 @@
             <th class="money">Amount</th>
             <th class="money">Accumulated</th>
             <th class="money">Deposited</th>
+            <th class="money">Total Value</th>
             <th class="money">Expensed</th>
             <th class="money remaining last-column">Remaining</th>
             <th class="options"></th>
         </tr>
-        <tr>
-            <th colspan="7" class="title"*ngIf="getWeeklyBudgetItems().length > 0">Weekly</th>
+        <tr budget-section-heading 
+            heading="Weekly"
+            *ngIf="getWeeklyBudgetItems().length > 0">
         </tr>
-        <tr class="item"*ngFor="let budgetItemSnapshot of getWeeklyBudgetItems()">
-            <td class="name">{{budgetItemSnapshot.budgetItem.name}}</td>
-            <td class="secondary-text">{{budgetItemSnapshot.budgetItem.description}}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.budgetItem.amountPerFrequency) | currency }}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.accumulated) | currency }}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.deposited) | currency }}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.expensed) | currency }}</td>
-            <td class="money positive remaining last-column">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
-            <td class="options">
-                <button mat-icon-button
-                    matTooltip="Options"
-                    [matMenuTriggerFor]="itemMenu1">
-                    <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #itemMenu1="matMenu">
-                    <button mat-menu-item (click)="openEditItemDialog(budgetItemSnapshot)"><mat-icon >edit</mat-icon>Edit</button>
-                    <button mat-menu-item (click)="openDeleteItemConfirmDialog(budgetItemSnapshot)"><mat-icon >delete</mat-icon>Delete</button>
-                </mat-menu>
-            </td>
+        <tr budget-item 
+            *ngFor="let budgetItemSnapshot of getWeeklyBudgetItems()"
+            [snapshot]="budgetItemSnapshot"
+            [budgetId]="budgetId">
+        <tr budget-section-heading 
+            heading="Monthly"
+            *ngIf="getMonthlyBudgetItems().length > 0">
         </tr>
-        <tr>
-            <th colspan="7" class="title" *ngIf="getMonthlyBudgetItems().length > 0">Monthly</th>
+        <tr budget-item 
+            *ngFor="let budgetItemSnapshot of getMonthlyBudgetItems()"
+            [snapshot]="budgetItemSnapshot" 
+            [budgetId]="budgetId">
         </tr>
-        <tr class="item" *ngFor="let budgetItemSnapshot of getMonthlyBudgetItems()">
-            <td class="name">{{budgetItemSnapshot.budgetItem.name}}</td>
-            <td class="secondary-text">{{budgetItemSnapshot.budgetItem.description}}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.budgetItem.amountPerFrequency) | currency }}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.accumulated) | currency }}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.deposited) | currency }}</td>
-            <td class="money">{{ asDecimalDollars(budgetItemSnapshot.expensed) | currency }}</td>
-            <td class="money positive remaining last-column">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
-            <td class="options">
-                <button mat-icon-button
-                    matTooltip="Options"
-                    [matMenuTriggerFor]="itemMenu2">
-                    <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #itemMenu2="matMenu">
-                    <button mat-menu-item (click)="openEditItemDialog(budgetItemSnapshot)"><mat-icon >edit</mat-icon>Edit</button>
-                    <button mat-menu-item (click)="openDeleteItemConfirmDialog(budgetItemSnapshot)"><mat-icon >delete</mat-icon>Delete</button>
-                </mat-menu>
-            </td>
-        </tr>
-        <tr>
-            <th colspan="7" class="title">Total</th>
-        </tr>
+        <tr budget-section-heading heading="Total"></tr>
         <tr class="totals">
                 <td></td>
                 <td></td>
                 <td></td>
                 <td class="money">{{ asDecimalDollars(snapshot?.totalAccumulated) | currency }}</td>
                 <td class="money">{{ asDecimalDollars(snapshot?.totalDeposited) | currency }}</td>
+                <td class="money">{{ asDecimalDollars(snapshot?.totalValue) | currency }}</td>
                 <td class="money">{{ asDecimalDollars(snapshot?.totalExpensed) | currency }}</td>
                 <td class="money positive remaining last-column">{{ asDecimalDollars(snapshot?.totalRemaining) | currency }}</td>
             </tr>

@@ -1,7 +1,22 @@
-<td class="cell name">{{snapshot.budgetItem.name}}</td>
-<td class="cell secondary-text">{{snapshot.budgetItem.description}}</td>
-<td class="cell money">{{ asDecimalDollars(snapshot.budgetItem.amountPerFrequency) | currency }}</td>
-<td class="cell money">{{ asDecimalDollars(snapshot.accumulated) | currency }}</td>
-<td class="cell money">{{ asDecimalDollars(snapshot.deposited) | currency }}</td>
-<td class="cell money">{{ asDecimalDollars(snapshot.expensed) | currency }}</td>
-<td class="cell money positive">{{ asDecimalDollars(snapshot.remaining) | currency }}</td>
+<td class="name">{{snapshot.budgetItem.name}}</td>
+<td class="secondary-text">{{snapshot.budgetItem.description}}</td>
+<td class="money">{{ asDecimalDollars(snapshot.budgetItem.amountPerFrequency) | currency }}</td>
+<td class="money">{{ asDecimalDollars(snapshot.accumulated) | currency }}</td>
+<td class="money">{{ asDecimalDollars(snapshot.deposited) | currency }}</td>
+<td class="money">{{ asDecimalDollars(snapshot.totalValue) | currency }}</td>
+<td class="money">{{ asDecimalDollars(snapshot.expensed) | currency }}</td>
+<td class="money remaining last-column"
+    [ngClass]="{'positive': isRemainingPositive, 'negative': isRemainingNegative}">
+    {{ asDecimalDollars(snapshot.remaining) | currency }}
+</td>
+<td class="options">
+    <button mat-icon-button
+        matTooltip="Options"
+        [matMenuTriggerFor]="itemMenu2">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #itemMenu2="matMenu">
+        <button mat-menu-item (click)="openEditItemDialog(snapshot)"><mat-icon >edit</mat-icon>Edit</button>
+        <button mat-menu-item (click)="openDeleteItemConfirmDialog(snapshot)"><mat-icon >delete</mat-icon>Delete</button>
+    </mat-menu>
+</td>

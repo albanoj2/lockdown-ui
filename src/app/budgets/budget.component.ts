@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BudgetService } from './service/budget.service';
 import { Budget, BudgetWithItems, BudgetItem } from './domain/budget';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -65,6 +65,10 @@ export class BudgetComponent implements OnInit {
         this.paramsSubscription.unsubscribe();
     }
 
+    public get budgetId() {
+        return this.snapshot !== undefined ? this.snapshot.budget.id : undefined;
+    }
+
     public getAmountAsDecimal(snapshot: BudgetItemSnapshot): number {
         return snapshot.budgetItem.amountPerFrequency / 100.0; 
     }
@@ -113,22 +117,6 @@ export class BudgetComponent implements OnInit {
         });
     }
 
-    public openDeleteItemConfirmDialog(snapshot: BudgetItemSnapshot): void {
-
-        let dialogRef = this.dialog.open(DeleteDialog, {
-            data: new DeleteDialogPayload('Delete Item?', 'Are you sure you want to delete this budget item?')
-        });
-
-        dialogRef.afterClosed().subscribe(shouldDelete => {
-            if (shouldDelete) {
-                this.budgetItemService.delete(this.snapshot.budget.id, snapshot.budgetItem)
-                .then(budget => {
-                    this.showNotification(`Budget Item ${snapshot.budgetItem.name}`, 'Deleted');
-                });
-            }
-        });
-    }
-
     public openEditDialog() {
         let dialogRef = this.dialog.open(SaveBudgetDialog, {
             data: new SaveBudgetPayload('Update a Budget', 'Update', this.snapshot.budget)
@@ -145,20 +133,13 @@ export class BudgetComponent implements OnInit {
             }
         });
     }
+}
 
-    public openEditItemDialog(snapshot: BudgetItemSnapshot) {
-        let dialogRef = this.dialog.open(SaveBudgetItemDialog, {
-            data: new SaveBudgetItemPayload('Update a Budget Item', 'Update', snapshot.budgetItem)
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {            
-            if (result.shouldSave) {
-                this.budgetItemService.update(this.snapshot.budget.id, result.budgetItem)
-                    .then(updatedBudgetItem => {
-                        this.reloadBudget(this.snapshot.budget.id);
-                        this.showNotification(`Budget item ${updatedBudgetItem.name}`, 'Updated');
-                    });
-            }
-        });
-    }
+
+@Component({
+    selector: '[budget-section-heading]',
+    template: '<th colspan="8" class="title">{{heading}}</th>'
+})
+export class BudgetSectionHeading {
+    @Input() heading: string;
 }

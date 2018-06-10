@@ -13,7 +13,7 @@ import { BudgetsComponent } from './budgets/budgets.component';
 import { BudgetListComponent } from './budgets/budget-list.component';
 import { NavbarComponent } from './navbar.component';
 import { BudgetListEntryComponent } from './budgets/budget-list-entry.component';
-import { BudgetComponent } from './budgets/budget.component';
+import { BudgetComponent, BudgetSectionHeading } from './budgets/budget.component';
 import { BudgetItemComponent } from './budgets/budget-item.component';
 import { SaveBudgetItemDialog } from './budgets/dialog/save-budget-item.dialog.component';
 import { DeleteDialog } from './common/dialog/delete.dialog.component';
@@ -33,6 +33,7 @@ import { TransactionRowComponent } from './accounts/transaction-row.component';
         BudgetListComponent,
         BudgetListEntryComponent,
         BudgetComponent,
+        BudgetSectionHeading,
         BudgetItemComponent,
         AccountComponent,
         TransactionRowComponent,
