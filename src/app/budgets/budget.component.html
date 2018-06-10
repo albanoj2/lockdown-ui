@@ -19,15 +19,15 @@
         </div>
     </div>
     
-    <table width="100%">
-        <tr class="last-heading">
+    <table class="data">
+        <tr class="main-heading">
             <th class="left-align">Name</th>
             <th class="left-align">Description</th>
             <th class="money">Amount</th>
             <th class="money">Accumulated</th>
             <th class="money">Deposited</th>
             <th class="money">Expensed</th>
-            <th class="money remaining">Remaining</th>
+            <th class="money remaining last-column">Remaining</th>
             <th class="options"></th>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.accumulated) | currency }}</td>
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.deposited) | currency }}</td>
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.expensed) | currency }}</td>
-            <td class="money positive remaining">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
+            <td class="money positive remaining last-column">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
             <td class="options">
                 <button mat-icon-button
                     matTooltip="Options"
@@ -63,7 +63,7 @@
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.accumulated) | currency }}</td>
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.deposited) | currency }}</td>
             <td class="money">{{ asDecimalDollars(budgetItemSnapshot.expensed) | currency }}</td>
-            <td class="money positive remaining">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
+            <td class="money positive remaining last-column">{{ asDecimalDollars(budgetItemSnapshot.remaining) | currency }}</td>
             <td class="options">
                 <button mat-icon-button
                     matTooltip="Options"
@@ -86,7 +86,7 @@
                 <td class="money">{{ asDecimalDollars(snapshot?.totalAccumulated) | currency }}</td>
                 <td class="money">{{ asDecimalDollars(snapshot?.totalDeposited) | currency }}</td>
                 <td class="money">{{ asDecimalDollars(snapshot?.totalExpensed) | currency }}</td>
-                <td class="money positive remaining">{{ asDecimalDollars(snapshot?.totalRemaining) | currency }}</td>
+                <td class="money positive remaining last-column">{{ asDecimalDollars(snapshot?.totalRemaining) | currency }}</td>
             </tr>
     </table>
 </div>

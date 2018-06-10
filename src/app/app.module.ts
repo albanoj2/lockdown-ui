@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule, MatTableModule, MatDialogModule, MatRadioModule, MatTooltipModule, MatMenuModule } from '@angular/material';
+import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule, MatTableModule, MatDialogModule, MatRadioModule, MatTooltipModule, MatMenuModule, MatSelect, MatSelectModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { DeleteDialog } from './common/dialog/delete.dialog.component';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component';
 import { AccountComponent } from './accounts/account.component';
+import { TransactionRowComponent } from './accounts/transaction-row.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AccountComponent } from './accounts/account.component';
         BudgetComponent,
         BudgetItemComponent,
         AccountComponent,
+        TransactionRowComponent,
         SaveBudgetItemDialog,
         SaveBudgetDialog,
         DeleteDialog
@@ -52,6 +54,7 @@ import { AccountComponent } from './accounts/account.component';
         MatRadioModule,
         MatTooltipModule,
         MatMenuModule,
+        MatSelectModule,
         EcoFabSpeedDialModule,
         AppRoutingModule,
         HttpClientModule,

@@ -1,14 +1,14 @@
-<table>
-    <tr>
-        <th>Date</th>
+<table class="data">
+    <tr class="main-heading">
+        <th class="date">Date</th>
         <th>Name</th>
         <th>Description</th>
-        <th>Amount</th>
+        <th class="money">Amount</th>
+        <th class="last-column">Budget Mapping</th>
     </tr>
-    <tr *ngFor="let transaction of sortedTransactions">
-        <td>{{transaction.shortDate}}</td>
-        <td>{{transaction.name}}</td>
-        <td>{{transaction.description}}</td>
-        <td>{{ transaction.amountAsDecimal | currency }}</td>
+    <tr transaction-row 
+        *ngFor="let transaction of sortedTransactions" 
+        [transaction]="transaction"
+        [activeBudgets]="activeBudgets">
     </tr>
 </table>

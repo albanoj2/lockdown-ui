@@ -53,3 +53,83 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+
+table.data {
+    border-spacing: 0;
+    width: 100%;
+}
+
+table.data tr th {
+    color: rgba(0,0,0,.54);
+    font-size: 12px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+table.data tr th,
+table.data tr td {
+    padding-left: 15px;
+}
+
+table.data tr th.last-column,
+table.data tr td.last-column {
+    padding-right: 15px;
+}
+
+table.data tr th.title {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 11px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+table.data tr th.title:not(.options) {
+    border-bottom: 1px solid rgba(0,0,0,.20);
+}
+
+table.data .left-align {
+    text-align: left;
+}
+
+table.data .name {
+    width: 150px;
+}
+
+table.data .money {
+    text-align: right;
+    width: 90px;
+}
+
+table.data .percent {
+    text-align: center;
+    width: 50px;
+}
+
+table.data .date {
+    width: 100px;
+    text-align: center;
+}
+
+table.data tr.main-heading th:not(.options) {
+    border-bottom: 1px solid rgba(0,0,0,.20);
+}
+
+table.data td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+table.data td:not(.options) {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,.20);
+}
+
+table.data td.positive {
+    color: #2E7D32;
+}
+
+table.data td.options {
+    width: 20px;
+    padding: 0px 0px 0px 5px;
+}

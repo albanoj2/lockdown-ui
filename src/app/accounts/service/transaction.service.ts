@@ -20,17 +20,29 @@ const httpOptions = {
 export class TransactionService {
 
     private baseUrl = 'http://localhost:8080/account';
+    private transactionUrl = 'http://localhost:8080/transaction';
  
     constructor(private http: HttpClient) {}
 
     public getTransactions(accountId: string): Promise<Transaction[]> {
         return new Promise((accept, reject) => {
             this.http.get<Transaction[]>(`${this.baseUrl}/${accountId}/transactions`, httpOptions)
-            .toPromise()
-            .then(jsonTransactions => {
-                let transactions = jsonTransactions.map(jsonTransaction => Transaction.fromJson(jsonTransaction));
-                accept(transactions);
-            });
+                .toPromise()
+                .then(jsonTransactions => {
+                    let transactions = jsonTransactions.map(jsonTransaction => Transaction.fromJson(jsonTransaction));
+                    accept(transactions);
+                });
+        });
+    }
+
+    public mapToSingleBudgetItem(transaction: Transaction, budgetItemId: string): Promise<Transaction> {
+        return new Promise((accept, reject) => {
+            this.http.patch(`${this.transactionUrl}/${transaction.id}/mapping/single`, {budgetItemId: budgetItemId}, httpOptions)
+                .toPromise()
+                .then(jsonTransaction => {
+                    let transaction = Transaction.fromJson(jsonTransaction);
+                    accept(transaction);
+                });
         });
     }
 }

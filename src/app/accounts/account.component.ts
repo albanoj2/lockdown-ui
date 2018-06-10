@@ -33,7 +33,6 @@ export class AccountComponent implements OnInit {
         this.budgetService.getActiveBudgets()
             .then(activeBudgets => {
                 this.activeBudgets = activeBudgets;
-                console.log(this.activeBudgets);
             });
     }
 

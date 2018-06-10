@@ -1,0 +1,16 @@
+<td class="date">{{transaction.shortDate}}</td>
+<td>{{transaction.name}}</td>
+<td>{{transaction.description}}</td>
+<td class="money">{{ transaction.amountAsDecimal | currency }}</td>
+<td class="last-column">
+    <mat-form-field>
+        <mat-select placeholder="Budget Mapping" [formControl]="budgetMappingControl" [(value)]="mappingId">
+            <mat-option>None</mat-option>
+            <mat-optgroup *ngFor="let budget of activeBudgets" [label]="budget.name">
+                <mat-option *ngFor="let item of budget.items" [value]="item.id" (click)="updateMapping()">
+                    {{ item.name }}
+                </mat-option>
+            </mat-optgroup>
+        </mat-select>
+    </mat-form-field>
+</td>
