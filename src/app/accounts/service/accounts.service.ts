@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
  
-import { Account } from './account';
+import { Account } from '../domain/account';
 
 const httpOptions = {
     headers: new HttpHeaders({

@@ -20,6 +20,7 @@ import { DeleteDialog } from './common/dialog/delete.dialog.component';
 
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component';
+import { AccountComponent } from './accounts/account.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component'
         BudgetListEntryComponent,
         BudgetComponent,
         BudgetItemComponent,
+        AccountComponent,
         SaveBudgetItemDialog,
         SaveBudgetDialog,
         DeleteDialog

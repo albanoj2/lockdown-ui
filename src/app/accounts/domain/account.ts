@@ -1,4 +1,4 @@
-import { Link } from '../common/domain/link';
+import { Link } from '../../common/domain/link';
 
 export class Account {
     public id: string;

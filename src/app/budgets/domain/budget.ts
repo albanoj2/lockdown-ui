@@ -47,3 +47,14 @@ export class BudgetItem {
         return copy;
     }
 }
+
+export class ActiveBudget {
+    public budgetId: string;
+    public name: string;
+    public items: ActiveBudgetItem[];
+}
+
+export class ActiveBudgetItem {
+    public budgetItemId: string;
+    public name: string;
+}

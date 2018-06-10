@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
  
-import { Budget, BudgetWithItems, BudgetItem } from '../domain/budget';
+import { Budget, BudgetWithItems, BudgetItem, ActiveBudget } from '../domain/budget';
 import { Service } from '../../common/service/service';
 
 const httpOptions = {
@@ -69,5 +69,9 @@ export class BudgetService extends Service<Budget> {
 
     public findItemsById(id: string): Observable<BudgetItem[]> {
         return this.http.get<BudgetItem[]>(`${this.baseUrl}/${id}/item`);
+    }
+
+    public getActiveBudgets(): Promise<ActiveBudget[]> {
+        return this.http.get<ActiveBudget[]>(`${this.baseUrl}/active`, httpOptions).toPromise();
     }
 }
