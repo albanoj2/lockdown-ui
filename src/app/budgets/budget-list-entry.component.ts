@@ -3,10 +3,7 @@ import { Budget } from './domain/budget';
 
 @Component({
     selector: 'budget-list-entry',
-    templateUrl: 'budget-list-entry.component.html',
-    styleUrls: [
-        'budget-list-entry.component.css'
-    ]
+    templateUrl: 'budget-list-entry.component.html'
 })
 export class BudgetListEntryComponent {
 

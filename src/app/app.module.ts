@@ -22,6 +22,11 @@ import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { SaveBudgetDialog } from './budgets/dialog/save-budget.dialog.component';
 import { AccountComponent } from './accounts/account.component';
 import { TransactionRowComponent } from './accounts/transaction-row.component';
+import { AccountDetailComponent } from './accounts/account-detail.component';
+import { AccountListComponent } from './accounts/account-list.component';
+import { AccountListEntryComponent } from './accounts/account-list-entry.component';
+import { AccountDashboardComponent } from './accounts/account-dashboard.component';
+import { AccountSplashComponent } from './accounts/account-splash.component';
 
 
 @NgModule({
@@ -36,6 +41,11 @@ import { TransactionRowComponent } from './accounts/transaction-row.component';
         BudgetSectionHeading,
         BudgetItemComponent,
         AccountComponent,
+        AccountDetailComponent,
+        AccountListComponent,
+        AccountListEntryComponent,
+        AccountDashboardComponent,
+        AccountSplashComponent,
         TransactionRowComponent,
         SaveBudgetItemDialog,
         SaveBudgetDialog,

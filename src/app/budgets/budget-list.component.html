@@ -1,9 +1,7 @@
-<div class="budget-list full-height">
-    <div class="title">Budgets</div>
-    <div class="budgets">
-        <mat-list class="budget-instance">
-            <mat-divider></mat-divider>
-            <budget-list-entry  *ngFor="let budget of budgets" [entry]="budget"></budget-list-entry>
-        </mat-list>
-    </div>
+<div class="title">Budgets</div>
+<div>
+    <mat-list>
+        <mat-divider></mat-divider>
+        <budget-list-entry *ngFor="let budget of budgets" [entry]="budget"></budget-list-entry>
+    </mat-list>
 </div>

@@ -1,14 +1,12 @@
 
-<div class="list">
-    <div class="budget-container">
-        <div class="budgets">
-            <budget-list class="full-height"></budget-list>
-        </div>
-        <div class="budget-details">
-            <budget></budget>
-        </div>
+<div class="sidebar-container">
+    <div class="sidebar">
+        <budget-list class="full-height"></budget-list>
     </div>
-</div>  
+    <div class="details">
+        <budget></budget>
+    </div>
+</div>
 <eco-fab-speed-dial (mouseenter)="openSpeedDial()" (mouseleave)="closeSpeedDial()" [(open)]="isSpeedDialOpen" animationMode="scale">
     <eco-fab-speed-dial-trigger spin="true">
         <button mat-fab class="budget-create" 
