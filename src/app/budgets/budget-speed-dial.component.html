@@ -1,12 +1,3 @@
-
-<div class="sidebar-container">
-    <div class="sidebar">
-        <budget-list class="full-height"></budget-list>
-    </div>
-    <div class="details">
-        <budget></budget>
-    </div>
-</div>
 <eco-fab-speed-dial (mouseenter)="openSpeedDial()" (mouseleave)="closeSpeedDial()" [(open)]="isSpeedDialOpen" animationMode="scale">
     <eco-fab-speed-dial-trigger spin="true">
         <button mat-fab class="budget-create" 
@@ -20,13 +11,15 @@
 
     <eco-fab-speed-dial-actions>
         <button mat-mini-fab 
+            *ngIf="hasBudget"
             class="budget-create-monthly-item"
             matTooltip="Create a new monthly budget item"
             matTooltipPosition="left"
             (click)="createMonthlyBudgetItem()">
             M
         </button>
-        <button mat-mini-fab 
+        <button mat-mini-fab
+            *ngIf="hasBudget" 
             class="budget-create-weekly-item" 
             matTooltip="Create a new weekly budget item"
             matTooltipPosition="left"

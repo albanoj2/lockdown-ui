@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { SaveBudgetDialog, SaveBudgetPayload } from './dialog/save-budget.dialog.component';
 import { BudgetService } from './service/budget.service';
@@ -8,19 +8,19 @@ import { SaveBudgetItemPayload, SaveBudgetItemDialog } from './dialog/save-budge
 import { BudgetItemService } from './service/budget-item.service';
 
 @Component({
-    selector: 'budgets',
-    templateUrl: 'budgets.component.html',
+    selector: 'budget-speed-dial',
+    templateUrl: 'budget-speed-dial.component.html',
     styleUrls: [
-        'budgets.component.css'
+        'budget-speed-dial.component.css'
     ]
 })
-export class BudgetsComponent implements OnInit {
+export class BudgetSpeedDialComponent implements OnInit {
 
     private budgetId: string;
     private isSpeedDialOpen: boolean = false;
 
     constructor(
-        public dialog: MatDialog, 
+        public dialog: MatDialog,
         private budgetService: BudgetService,
         private budgetItemService: BudgetItemService,
         private route: ActivatedRoute,
@@ -30,6 +30,10 @@ export class BudgetsComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.budgetId = params['budgetId'];
         });
+    }
+
+    public get hasBudget() {
+        return this.budgetId !== undefined;
     }
 
     public openSpeedDial() {

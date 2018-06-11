@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AccountsComponent } from './accounts/accounts.component';
-import { BudgetsComponent } from './budgets/budgets.component';
+import { BudgetDetailComponent } from './budgets/budget-detail.component';
 import { BudgetListComponent } from './budgets/budget-list.component';
 import { NavbarComponent } from './navbar.component';
 import { BudgetListEntryComponent } from './budgets/budget-list-entry.component';
@@ -27,6 +27,9 @@ import { AccountListComponent } from './accounts/account-list.component';
 import { AccountListEntryComponent } from './accounts/account-list-entry.component';
 import { AccountDashboardComponent } from './accounts/account-dashboard.component';
 import { AccountSplashComponent } from './accounts/account-splash.component';
+import { BudgetDashboardComponent } from './budgets/budget-dashboard.component';
+import { BudgetSplashComponent } from './budgets/budget-splash.component';
+import { BudgetSpeedDialComponent } from './budgets/budget-speed-dial.component';
 
 
 @NgModule({
@@ -34,12 +37,15 @@ import { AccountSplashComponent } from './accounts/account-splash.component';
         AppComponent,
         AccountsComponent,
         NavbarComponent,
-        BudgetsComponent,
+        BudgetDetailComponent,
         BudgetListComponent,
         BudgetListEntryComponent,
         BudgetComponent,
         BudgetSectionHeading,
         BudgetItemComponent,
+        BudgetDashboardComponent,
+        BudgetSplashComponent,
+        BudgetSpeedDialComponent,
         AccountComponent,
         AccountDetailComponent,
         AccountListComponent,
