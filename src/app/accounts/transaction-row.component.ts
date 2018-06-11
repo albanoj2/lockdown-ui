@@ -19,6 +19,14 @@ export class TransactionRowComponent implements OnInit {
     constructor(private transactionService: TransactionService) {}
 
     ngOnInit() {
+
+        console.log(this.transaction)
+
+        if (this.transaction.budgetItemIdMappings !== undefined) {
+            this.mappingId = this.transaction.budgetItemIdMappings[0].budgetItemId;
+            console.log(this.mappingId);
+        }
+        
     }
 
     private updateMapping() {

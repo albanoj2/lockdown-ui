@@ -4,7 +4,7 @@
 <td class="money">{{ transaction.amountAsDecimal | currency }}</td>
 <td class="last-column">
     <mat-form-field>
-        <mat-select placeholder="Budget Mapping" [formControl]="budgetMappingControl" [(value)]="mappingId">
+        <mat-select placeholder="Budget Mapping" [formControl]="budgetMappingControl" [(ngModel)]="mappingId">
             <mat-option>None</mat-option>
             <mat-optgroup *ngFor="let budget of activeBudgets" [label]="budget.name">
                 <mat-option *ngFor="let item of budget.items" [value]="item.id" (click)="updateMapping()">

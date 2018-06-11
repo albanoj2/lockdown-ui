@@ -40,8 +40,8 @@ export class AccountComponent implements OnInit {
 
         if (this.accountId !== undefined) {
             this.transactionService.getTransactions(this.accountId)
-                .then(transactions => {
-                    this.transactions = transactions;
+                .then(page => {
+                    this.transactions = page.content;
                     console.log(this.transactions);
                 });
         }

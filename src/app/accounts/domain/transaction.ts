@@ -9,7 +9,7 @@ export class Transaction {
     private amount: number;
     public isPending: boolean;
     public comment: string;
-    public budgetItemMapping: BudgetItemMapping;
+    public budgetItemIdMappings: BudgetItemMapping[];
 
     public static fromJson(data: any): Transaction {
         let transaction = new Transaction();
@@ -20,7 +20,7 @@ export class Transaction {
         transaction.amount = +data.amount;
         transaction.isPending = data.isPending;
         transaction.comment = data.comment;
-        transaction.budgetItemMapping = data.budgetItemMapping !== undefined ? BudgetItemMapping.fromJson(data.budgetItemMapping) : undefined;
+        transaction.budgetItemIdMappings = data.budgetItemIdMappings !== undefined ? data.budgetItemIdMappings.map(BudgetItemMapping.fromJson) : undefined;
         return transaction;
     }
 
@@ -42,11 +42,14 @@ export class Transaction {
 }
 
 export class BudgetItemMapping {
-    public budgetItemIdMappings: Map<string, number>;
+    
+    public budgetItemId: string;
+    public amount: number;
 
-    public static fromJson(data: any): BudgetItemMapping {
+    public static fromJson(json: any): BudgetItemMapping {
         let mapping = new BudgetItemMapping();
-        mapping.budgetItemIdMappings = data.budgetItemIdMappings;
+        mapping.budgetItemId = json.budgetItemId;
+        mapping.amount = +json.amount;
         return mapping;
     }
 }
