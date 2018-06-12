@@ -22,20 +22,23 @@ export class AccountService {
  
     constructor(private http: HttpClient) {}
 
-    public getAccounts(): Observable<Account[]> {
-        return this.http.get<Account[]>(this.baseUrl, httpOptions)
-            .pipe(
-                tap(
-                    data => console.log(data),
-                    error => console.error(error)
-                )
-            );
+    public getAccounts(): Promise<Account[]> {
+        return new Promise((accept, reject) => {
+            this.http.get<Account[]>(this.baseUrl, httpOptions)
+                .toPromise()
+                .then(jsonAccounts => {
+                    accept(jsonAccounts.map(Account.fromJson));
+                });
+        });
     }
 
-    private handleError<T> (operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            console.error(error);
-            return of(result as T);
-        };
-      }
+    public getAccount(accountId: string): Promise<Account> {
+        return new Promise((accept, reject) => {
+            this.http.get<Account>(`${this.baseUrl}/${accountId}`, httpOptions)
+                .toPromise()
+                .then(jsonAccount => {
+                    accept(Account.fromJson(jsonAccount));
+                });
+        });
+    }
 }

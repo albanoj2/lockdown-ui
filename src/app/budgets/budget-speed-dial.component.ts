@@ -77,8 +77,7 @@ export class BudgetSpeedDialComponent implements OnInit {
     
         dialogRef.afterClosed().subscribe(result => {            
             if (result.shouldSave) {
-                this.budgetItemService.create(this.budgetId, result.budgetItem)
-                    .then(createdBudgetItem => console.log(createdBudgetItem));
+                this.budgetItemService.create(this.budgetId, result.budgetItem);
             }
         });
     }

@@ -23,11 +23,8 @@ export class TransactionRowComponent implements OnInit {
 
     ngOnInit() {
 
-        console.log(this.transaction)
-
         if (this.transaction.budgetItemIdMappings !== undefined) {
             this.mappingId = this.transaction.budgetItemIdMappings[0].budgetItemId;
-            console.log(this.mappingId);
         }
         
     }

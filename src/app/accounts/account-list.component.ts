@@ -18,6 +18,6 @@ export class AccountListComponent implements OnInit {
 
     private loadAccounts() {
         this.accountService.getAccounts()
-            .subscribe(accounts => this.accounts = accounts);
+            .then(accounts => this.accounts = accounts);
     }
 }

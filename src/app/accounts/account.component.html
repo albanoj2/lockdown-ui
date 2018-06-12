@@ -1,14 +1,17 @@
-<table class="data">
-    <tr class="main-heading">
-        <th class="date">Date</th>
-        <th>Description</th>
-        <th class="money">Amount</th>
-        <th class="last-column">Budget Mapping</th>
-        <th class="options"></th>
-    </tr>
-    <tr transaction-row 
-        *ngFor="let transaction of sortedTransactions" 
-        [transaction]="transaction"
-        [activeBudgets]="activeBudgets">
-    </tr>
-</table>
+<div class="transactions">
+    <h1>{{account?.name}}</h1>
+    <table class="data">
+        <tr class="main-heading">
+            <th class="date">Date</th>
+            <th class="left-align">Description</th>
+            <th class="money">Amount</th>
+            <th class="left-align mapping last-column">Budget Mapping</th>
+            <th class="options"></th>
+        </tr>
+        <tr transaction-row 
+            *ngFor="let transaction of sortedTransactions" 
+            [transaction]="transaction"
+            [activeBudgets]="activeBudgets">
+        </tr>
+    </table>
+</div>

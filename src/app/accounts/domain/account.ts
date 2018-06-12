@@ -7,4 +7,20 @@ export class Account {
     public type: string;
     public subType: string;
     public links: Link[];
+    public unbudgetedTransactionCount: number;
+
+    public static fromJson(json: any): Account {
+
+        let account = new Account();
+        
+        account.id = json.id;
+        account.name = json.name;
+        account.institution = json.institution;
+        account.type = json.type;
+        account.subType = json.subType;
+        account.links = json._links;
+        account.unbudgetedTransactionCount = json.unbudgetedTransactionCount;
+
+        return account;
+    }
 }

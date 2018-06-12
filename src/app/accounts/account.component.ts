@@ -10,16 +10,21 @@ import { ActiveBudget } from '../budgets/domain/budget';
 
 @Component({
     selector: 'account',
-    templateUrl: 'account.component.html'
+    templateUrl: 'account.component.html',
+    styleUrls: [
+        'account.component.css'
+    ]
 })
 export class AccountComponent implements OnInit {
 
-    private accountId;
+    private account: Account;
+    private accountId: string;
     private transactions: Transaction[] = [];
     private activeBudgets: ActiveBudget[] = [];
     private paramsSubscription: Subscription;
 
     constructor(
+        private accountService: AccountService,
         private transactionService: TransactionService,
         private budgetService: BudgetService,
         private route: ActivatedRoute) {}
@@ -27,6 +32,8 @@ export class AccountComponent implements OnInit {
     ngOnInit() {
         this.paramsSubscription = this.route.params.subscribe(params => {
             this.accountId = params['accountId'];
+            this.accountService.getAccount(this.accountId)
+                .then(account => this.account = account);
             this.getTransactions();
         });
 
@@ -40,10 +47,7 @@ export class AccountComponent implements OnInit {
 
         if (this.accountId !== undefined) {
             this.transactionService.getTransactions(this.accountId)
-                .then(page => {
-                    this.transactions = page.content;
-                    console.log(this.transactions);
-                });
+                .then(page => this.transactions = page.content);
         }
     }
 

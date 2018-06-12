@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule, MatTableModule, MatDialogModule, MatRadioModule, MatTooltipModule, MatMenuModule, MatSelect, MatSelectModule } from '@angular/material';
+import { MatInputModule, MatSnackBarModule, MatButtonModule, MatListModule, MatIconModule, MatTableModule, MatDialogModule, MatRadioModule, MatTooltipModule, MatMenuModule, MatSelect, MatSelectModule, MatBadgeModule, MatChipsModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -70,6 +70,8 @@ import { BudgetSpeedDialComponent } from './budgets/budget-speed-dial.component'
         MatTooltipModule,
         MatMenuModule,
         MatSelectModule,
+        MatBadgeModule,
+        MatChipsModule,
         EcoFabSpeedDialModule,
         AppRoutingModule,
         HttpClientModule,

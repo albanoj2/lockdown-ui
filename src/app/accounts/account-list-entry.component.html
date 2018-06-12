@@ -1,5 +1,10 @@
 <mat-list-item class="entry" [routerLink]="['/accounts', account.id]">
     <h3 mat-line class="primary-text">{{account.name}}</h3>
     <p mat-line class="secondary-text">{{account.institution}}</p>
+    <mat-chip-list>
+        <mat-chip selected="true" color="orange" matTooltip="{{account.unbudgetedTransactionCount}} unbudgeted transactions">
+            {{account.unbudgetedTransactionCount}}
+        </mat-chip>
+    </mat-chip-list>
 </mat-list-item>
 <mat-divider></mat-divider>

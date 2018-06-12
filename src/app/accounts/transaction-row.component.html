@@ -1,7 +1,7 @@
 <td class="date">{{transaction.shortDate}}</td>
 <td>{{transaction.name}}</td>
 <td class="money">{{ transaction.amountAsDecimal | currency }}</td>
-<td class="mapping last-column">
+<td class="left-align mapping last-column">
     <mat-select placeholder="Not Mapped" [formControl]="budgetMappingControl" [(ngModel)]="mappingId">
         <mat-option>None</mat-option>
         <mat-optgroup *ngFor="let budget of activeBudgets" [label]="budget.name">
