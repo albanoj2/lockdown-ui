@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AccountsComponent } from './accounts/accounts.component';
 import { BudgetDetailComponent } from './budgets/budget-detail.component';
 import { BudgetListComponent } from './budgets/budget-list.component';
 import { NavbarComponent } from './navbar.component';
@@ -35,7 +34,6 @@ import { BudgetSpeedDialComponent } from './budgets/budget-speed-dial.component'
 @NgModule({
     declarations: [
         AppComponent,
-        AccountsComponent,
         NavbarComponent,
         BudgetDetailComponent,
         BudgetListComponent,

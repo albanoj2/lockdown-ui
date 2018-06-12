@@ -7,7 +7,10 @@ import { TransactionService } from "./service/transaction.service";
 
 @Component({
     selector: '[transaction-row]',
-    templateUrl: 'transaction-row.component.html'
+    templateUrl: 'transaction-row.component.html',
+    styleUrls: [
+        'transaction-row.component.css'
+    ]
 })
 export class TransactionRowComponent implements OnInit {
     
@@ -32,5 +35,9 @@ export class TransactionRowComponent implements OnInit {
     private updateMapping() {
         this.transactionService.mapToSingleBudgetItem(this.transaction, this.mappingId)
             .then(transaction => this.transaction = transaction);
+    }
+
+    public get isUnmapped() {
+        return this.mappingId === undefined;
     }
 }
