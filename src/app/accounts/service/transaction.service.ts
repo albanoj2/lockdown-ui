@@ -25,7 +25,7 @@ export class TransactionService {
  
     constructor(private http: HttpClient) {}
 
-    public getTransactions(accountId: string, page: number = 1, size: number = 20, sort: string = 'DESC'): Promise<Page<Transaction>> {
+    public getTransactions(accountId: string, page: number = 0, size: number = 20, sort: string = 'DESC'): Promise<Page<Transaction>> {
         return new Promise((accept, reject) => {
             this.http.get<Transaction[]>(`${this.baseUrl}/${accountId}/transactions`, 
                 {
@@ -44,11 +44,10 @@ export class TransactionService {
     }
 
     private static toPageParams(page: number, size: number, sort: string): HttpParams {
-        let params = new HttpParams();
-        params.append('page', page.toString());
-        params.append('size', size.toString());
-        params.append('sort', sort);
-        return params;
+        return new HttpParams()
+            .set('page', page.toString())
+            .set('size', size.toString())
+            .set('sort', sort);
     }
 
     public mapToSingleBudgetItem(transaction: Transaction, budgetItemId: string): Promise<Transaction> {

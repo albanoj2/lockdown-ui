@@ -22,6 +22,13 @@ export class AccountComponent implements OnInit {
     private transactions: Transaction[] = [];
     private activeBudgets: ActiveBudget[] = [];
     private paramsSubscription: Subscription;
+    private defaultPageSize: number = 20;
+    private totalNumberOfTransactions: number = 0;
+    private pageSizeOptions = [10, 15, 20, 25, 50];
+
+    private currentPageIndex = 0;
+    private currentPageSize = this.defaultPageSize;
+    private isOverlayVisible = true;
 
     constructor(
         private accountService: AccountService,
@@ -34,7 +41,7 @@ export class AccountComponent implements OnInit {
             this.accountId = params['accountId'];
             this.accountService.getAccount(this.accountId)
                 .then(account => this.account = account);
-            this.getTransactions();
+            this.loadTransactions();
         });
 
         this.budgetService.getActiveBudgets()
@@ -43,12 +50,33 @@ export class AccountComponent implements OnInit {
             });
     }
 
-    private getTransactions() {
+    private loadTransactions() {
 
         if (this.accountId !== undefined) {
-            this.transactionService.getTransactions(this.accountId)
-                .then(page => this.transactions = page.content);
+            this.turnOnOverlay();
+            this.transactionService.getTransactions(this.accountId, this.currentPageIndex, this.currentPageSize)
+                .then(page => {
+                    this.transactions = page.content;
+                    this.totalNumberOfTransactions = page.totalElements;
+                    this.turnOffOverlay();
+                });
         }
+    }
+
+    public onPaginationChange(event: any) {
+        console.log("Changed page")
+        console.log(event)
+        this.currentPageIndex = event.pageIndex;
+        this.currentPageSize = event.pageSize;
+        this.loadTransactions();
+    }
+
+    public turnOnOverlay() {
+        this.isOverlayVisible = true;
+    }
+
+    public turnOffOverlay() {
+        this.isOverlayVisible = false;
     }
 
     public get sortedTransactions() {
